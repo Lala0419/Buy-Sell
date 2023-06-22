@@ -1,4 +1,4 @@
-1. **My Listings:**
+1. **My Listings (Admin only):**
 
    - **Read:** Retrieve a list of items the user has listed for sale.
    - **Update:** Edit the sale status of an item.
@@ -51,3 +51,47 @@
      Example response: [{receiver_name: 'Jim', receiver_id: 432, message: 'Can I buy this?', date: '2032-4-042'}, ...]
    - **POST messages/** Create a new message.
      Example for body {receiver_id: 43, item_id: 32, message: "Is this still for sale?"}
+
+6. **Nav bar:**
+
+reference: tiny-app, lightbnb
+
+- **GET /login** Renders login page
+
+- **GET /register** Leads the user to the 'Sign up' page
+
+- **GET /home** home logo which render the homepage if somewhere else
+
+- **GET /logout** logout & clear user_id cookie
+
+**Side bar/drop down**
+
+reference: tiny-app, lightbnb
+
+- **GET /my-favourites** Leads to the page to the List of favourited items
+
+- **GET /my-messages** Leads to My messages page
+
+- **GET /My Listings** Route to the page for my-listings (admin only)
+
+- **GET /new-listing** Route to Create new listing (admin only)
+
+**Homepage**
+
+- **GET /home** Route for rendering the main dashboard with
+
+  a). featured items
+
+  b). Other announcements, etc.User can filter items by price on main feed
+
+**Item page**
+
+- **GET /Item{item_id}** Leads to individual item's page for users
+
+- **GET /login** Takes to login page to login
+
+- **POST /Item{item_id}/favourite** User can favourite an item from the item page
+
+- **GET /Item{item_id}/message**User can click on “Message seller” on item page, which takes them to a messaging page with seller (need to figure out if we want a separate page for messages or the same page)
+
+- **POST /ITEM{item_id}/status** edit item status (admin)
