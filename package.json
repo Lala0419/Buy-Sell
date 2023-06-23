@@ -13,9 +13,7 @@
   "lint-staged": {
     "src/**/*.{js,jsx,json,ts,tsx}": [
       "eslint --fix",
-      "git add",
-      "prettier --single-quote --write",
-      "git add"
+      "prettier --single-quote --write"
     ]
   },
   "author": "Lighthouse Labs",
