@@ -20,7 +20,7 @@
 
 - Divided by pages and components.
 
-  - Framework/ mockup design (EK)
+  - wireframe/ mockup design (EK)
   - Homepage (EK)
   - Single Item page (EK)
   - Add Item (AK)
