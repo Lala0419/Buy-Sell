@@ -3,7 +3,9 @@
     "commonjs": true,
     "es6": true,
     "node": true,
-    "mocha": true
+    "mocha": true,
+    "browser": true,
+    "jest": true
   },
   "extends": "eslint:recommended",
   "globals": {
@@ -14,6 +16,9 @@
     "ecmaVersion": 2018
   },
   "rules": {
+    "prettier/prettier": "error",
+    "camelcase": "off",
+    "no-use-before-define": "off",
     "indent": [
       "error",
       2
