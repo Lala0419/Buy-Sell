@@ -37,7 +37,9 @@ const runSeedFiles = async () => {
 const runResetDB = async () => {
   try {
     process.env.DB_HOST &&
-      console.log(`-> Connecting to PG on ${process.env.DB_HOST} as ${process.env.DB_USER}...`);
+      console.log(
+        `-> Connecting to PG on ${process.env.DB_HOST} as ${process.env.DB_USER}...`
+      );
 
     await runSchemaFiles();
     await runSeedFiles();

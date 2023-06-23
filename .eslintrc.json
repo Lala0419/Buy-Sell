@@ -3,9 +3,17 @@
     "commonjs": true,
     "es6": true,
     "node": true,
-    "mocha": true
+    "mocha": true,
+    "browser": true,
+    "jest": true
   },
-  "extends": "eslint:recommended",
+  "plugins": [
+    "prettier"
+  ],
+  "extends": [
+    "standard",
+    "prettier"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -14,6 +22,9 @@
     "ecmaVersion": 2018
   },
   "rules": {
+    "prettier/prettier": "error",
+    "camelcase": "off",
+    "no-use-before-define": "off",
     "indent": [
       "error",
       2
@@ -40,10 +51,8 @@
     "func-style": ["error", "expression"],
     "space-infix-ops": "error",
     "space-in-parens": "error",
-    "camelcase": "error",
     "eqeqeq": "error",
     "brace-style": "error",
-    "space-before-function-paren": [ "warn", { "anonymous": "never", "named": "never", "asyncArrow": "never" } ],
     "func-names": ["error", "never"],
     "quotes": "off"
   }
