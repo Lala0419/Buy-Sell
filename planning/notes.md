@@ -15,3 +15,33 @@
 - Use the `npm run db:reset` command each time there is a change to the database schema or seeds.
   - It runs through each of the files, in order, and executes them against the database.
   - Note: you will lose all newly created (test) data each time this is run, since the schema files will tend to `DROP` the tables and recreate them.
+
+## Tasks
+
+- Divided by pages and components.
+
+  - Framework/ mockup design (EK)
+  - Homepage (EK)
+  - Single Item page (EK)
+  - Add Item (AK)
+  - Favourites page (AK)
+  - Sign up /Login \* (NM)
+  - Message page (NM)
+  - Nav bar (NM)
+
+## Workflow
+
+&rarr; make queries for the pages you are assigned on<br />
+&rarr; create routes<br />
+&rarr; test the routes (using by postman)<br />
+&rarr; connect the routes to the server<br />
+&rarr; EJS views<br />
+&rarr; frontend<br />
+<br />
+
+## Deadlines<br />
+
+&rarr; backend by Monday<br />
+&rarr; frontend by Wednesday<br />
+&rarr; Thursday, connect everything<br />
+&rarr; Friday, extra day to check everything and prepare for the presentation
