@@ -7,7 +7,13 @@
     "browser": true,
     "jest": true
   },
-  "extends": "eslint:recommended",
+  "plugins": [
+    "prettier"
+  ],
+  "extends": [
+    "standard",
+    "prettier"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -45,10 +51,8 @@
     "func-style": ["error", "expression"],
     "space-infix-ops": "error",
     "space-in-parens": "error",
-    "camelcase": "error",
     "eqeqeq": "error",
     "brace-style": "error",
-    "space-before-function-paren": [ "warn", { "anonymous": "never", "named": "never", "asyncArrow": "never" } ],
     "func-names": ["error", "never"],
     "quotes": "off"
   }
