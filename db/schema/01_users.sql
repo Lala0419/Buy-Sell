@@ -11,7 +11,7 @@ CREATE TABLE users (
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   phone_number VARCHAR(32),
-  adress VARCHAR(255) NOT NULL
+  address VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE items (
@@ -28,7 +28,7 @@ CREATE TABLE items (
 CREATE TABLE favourites (
   id SERIAL PRIMARY KEY NOT NULL,
   item_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE messages (
