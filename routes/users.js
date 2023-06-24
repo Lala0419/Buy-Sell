@@ -9,6 +9,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db/connection");
 
+// according to server.js this route is actually localhost8080/users
 router.get("/", (req, res) => {
 	res.render("users");
 });
