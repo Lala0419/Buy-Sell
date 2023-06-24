@@ -60,6 +60,22 @@ const getAllItems = (options, limit = 9) => {
   });
 };
 
-module.exports = { getAllItems };
+// Render 3 newest items from the database
+const getNewItems = () => {
+  return db
+    .query(
+      `
+  SELECT *
+  FROM items
+  LIMIT BY 3
+  ORDER BY DATE DESC
+  `
+    )
+    .then((res) => {
+      return res.rows;
+    });
+};
+
+module.exports = { getAllItems, getNewItems };
 
 module.exports = db;
