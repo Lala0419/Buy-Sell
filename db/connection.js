@@ -13,6 +13,7 @@ const db = new Pool(dbParams);
 
 db.connect();
 
+// Helper function to add conditions in the queryString
 const filter = (queryParams) => {
   let queryString = "";
   if (queryParams.length === 1) {
@@ -23,6 +24,7 @@ const filter = (queryParams) => {
   return queryString;
 };
 
+// Retrieves all items for the user
 const getAllItems = (options, limit = 9) => {
   const queryParams = [];
   console.log(options);
