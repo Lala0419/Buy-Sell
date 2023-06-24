@@ -8,19 +8,63 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db/connection");
+const userQueries('..db/queries/signup_login.js')
 
 router.get("/", (req, res) => {
 	res.render("users");
 });
-router.get("/login", (req, res) => {
-	res.send("ok");
-	//res.render("home");
+
+router.post("/register", (req, res) => {
+	const { username } = req.body;
+	if (!name) {
+		return res
+			.status(403)
+			.render("error", { message: "Provide name to register!" });
+	}
+
+	const newUser = { username };
+	userQueries
+		.register(newUser)
+		.then(() => {
+			res.redirect("/login");
+		})
+		.catch((err) => {
+			res
+				.status(500)
+				.render("error", { message: `Error registering user: ${err.message}` });
+		});
 });
-router.get("/logout", (req, res) => {
-	res.render("users");
+
+router.post("/login", (req, res) => {
+	const { username } = req.body;
+	if (!username) {
+		return res
+			.status(403)
+			.render("error", { message: "We need your name to login!" });
+	}
+
+	userQueries
+		.login(username)
+		.then((user) => {
+			console.log("user", user);
+			if (!user) {
+				return res
+					.status(403)
+					.render("error", { message: "Invalid user name!" });
+			}
+
+			req.session.user_id = user.id;
+			res.redirect("/home");
+		})
+		.catch((err) => {
+			res.status(500).json({ error: err.message });
+		});
 });
-router.get("/signin", (req, res) => {
-	res.render("users");
+
+router.post("/logout", (req, res) => {
+	req.session = null;
+	res.redirect("/login");
 });
 
 module.exports = router;
+
