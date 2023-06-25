@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Messgaes</title>
+
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+		<link rel="stylesheet" href="/styles/reset.css" />
+		<link rel="stylesheet" href="/styles/messages.css" />
+
+		<script src="/vendor/jquery-3.0.0.js"></script>
+		<script defer src="/scripts/messages.js"></script>
+	</head>
+
+	<body>
+		<div class="top">
+			<h1>Message with Kei</h1>
+			<h2>Alice</h2>
+		</div>
+		<section class="dummy_message">
+			<img src="" alt="logo" />
+			<p>Hi, is this product available?</p>
+		</section>
+
+		<% for(let message of messages){ %>
+		<section id="messages" class="message hide">
+			<p><%= message.message %></p>
+			<img src="" alt="logo" />
+		</section>
+		<%}%>
+
+		<form action="/messages" method="POST" id="messagesForm">
+			<input
+				class="input"
+				type="text"
+				id="message"
+				name="message"
+				value=""
+				placeholder="Yes it is!"
+			/><br /><br />
+			<input class="button" type="submit" value="Submit" id="fetch-messages" />
+		</form>
+	</body>
+</html>
