@@ -36,6 +36,6 @@ CREATE TABLE messages (
   reciever_id INTEGER REFERENCES  users(id)ON DELETE CASCADE,
   item_id INTEGER REFERENCES  users(id)ON DELETE CASCADE,
   message TEXT NOT NULL,
-  date   DATE NOT NULL
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
