@@ -108,14 +108,25 @@ body {
     margin-bottom: 30px;
   }
 
-  .item_photo {
-    width: 350px;
-  }
+  // .item_photo {
+
+  // }
   .items_container {
     display: grid;
+    grid-gap: 50px;
     grid-template-columns: auto auto auto;
     grid-column-end: auto;
     // background-color: skyblue;
+
+    .item {
+      margin: auto;
+      width: 100%;
+
+      .item_photo {
+        width: 100%;
+      }
+    }
+
 
     .item_name {
       margin-top: 20px;
