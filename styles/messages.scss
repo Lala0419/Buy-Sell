@@ -1,0 +1,82 @@
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+.top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 2px solid grey;
+	padding: 4rem 4rem 1rem;
+
+	h1 {
+		font-size: 3rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+}
+
+.dummy_message {
+	display: flex;
+	margin: 0 2rem;
+
+	p {
+		width: 80%;
+		border: 2px solid black;
+		border-radius: 30px;
+		margin: 4rem 0;
+		margin-right: 2rem;
+		padding: 3rem 1rem;
+	}
+	img {
+		margin-top: 3rem;
+		margin-left: 2rem;
+	}
+}
+.message {
+	display: flex;
+	margin: 0 2rem;
+
+	p {
+		width: 80%;
+		border: 2px solid black;
+		border-radius: 30px;
+		margin: 4rem 0;
+		margin-left: 2rem;
+		padding: 3rem 1rem;
+	}
+	img {
+		margin-top: 3rem;
+		margin-right: 2rem;
+	}
+}
+
+form {
+	display: flex;
+	margin: 0 2rem;
+	flex-direction: column;
+
+	.input {
+		width: 80%;
+		border: 2px solid orangered;
+		border-radius: 30px;
+		margin: 4rem 0;
+		margin-left: 2rem;
+		padding: 3rem 1rem;
+	}
+
+	.button {
+		border-radius: 10px;
+		padding: 1rem 0;
+		background-color: orange;
+		margin-left: auto;
+		width: 7rem;
+	}
+}
+
+// .hide {
+// 	display: none;
+// }
