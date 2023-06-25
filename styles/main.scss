@@ -5,6 +5,12 @@ body {
   align-items: center;
   min-height: 100vh;
 
+  .module_container {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    width: 90%;
+  }
   .banner {
     margin-top: 50px;
     width: 100%;
@@ -22,16 +28,18 @@ body {
   }
 
   .new_container {
-    width: 95%;
+    // width: 95%;
 
     .new_items_header {
-      margin-top: 50px;
+      // margin: 100px, 0px, 80px;
+      margin-top: 90px;
+      margin-bottom: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       height: 35px;
-      background-color: rgb(249, 199, 97);
+      background-color: rgb(225, 213, 188);
       color: white;
       font-weight: bold;
       // border-radius: 8px;
@@ -44,46 +52,65 @@ body {
       justify-content: space-between;
       align-items: center;
 
-      .new_item {
 
         .new_item_photo {
           width: 300px;
           height: auto;
-          // border-radius: 20px;
+          // border-radius: 8px;
           // box-shadow:2px 2px 2px rgb(142, 140, 140);
         }
 
         .name_price {
           display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          // padding: 1em;
-          width: 90%
+          flex-direction: column;
+
+
+        }
+
+        .new_item_name .new_item_price .new_item_description {
+          margin: 0px, 0px, 10px;
+          // background-color: rgb(202, 202, 206);
+          background-color: rgb(54, 54, 55);
+        }
+        // why is the above not working?
+
+        .new_item_name {
+          margin-top: 20px;
+          margin-bottom: 10px;
+        }
+
+        .new_item_price {
+          margin-top: 0px;
+          margin-bottom: 10px;
         }
 
         .new_item_description {
-          width: 90%;
+          margin-top: 0px;
+          margin-bottom: 10px;
         }
-
       }
-    }
+
   }
 
+  .items_header {
+        margin-top: 90px;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 40px;
+        border-bottom: solid black 2px;
+
+      }
+
   .items_container {
-    width: 95%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-end: auto;
+    // background-color: skyblue;
 
-
-    .items_header {
-      display: flex;
-      justify-content: start;
-      width: 100%;
-      // background-color: blue;
-      border-bottom: solid black 2px;
-      padding: 0, 5px;
+    .items_container:last-child {
+      padding-right: 50px;
     }
+
 
 
   }
@@ -100,19 +127,23 @@ nav {
   align-items: center;
   padding: 0 1.5em;
   color: grey;
-  background-color: rgba(188, 200, 185, 0.75);
+  // background-color: rgba(188, 200, 185, 0.75);
+  // background: rgba(196, 200, 185, 0.75);
   box-shadow:2px 2px 2px rgb(142, 140, 140);
+  background: white;
 
   .logo {
+    margin-left: 1%;
     width: 30px;
     height: 30px;
     object-fit: fill;
-    border: 1px solid rgb(201, 196, 185);
-    box-shadow: 2px 2px 2px rgb(94, 85, 85);
-    border-radius: 8px;
+    // border: 1px solid rgb(201, 196, 185);
+    // box-shadow: 2px 2px 2px rgb(94, 85, 85);
+    border-radius: 20px;
     }
 
   .container1 {
+    padding-right: 1%;
     width: 50%;
     display: flex;
     justify-content: space-between;
