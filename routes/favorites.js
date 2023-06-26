@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db/connection");
 
-router.get("/", (req, res) => {
-	const query = `SELECT * FROM widgets`;
-	console.log(query);
-	db.query(query)
-		.then((data) => {
-			const widgets = data.rows;
-			res.json({ widgets });
-		})
-		.catch((err) => {
-			res.status(500).json({ error: err.message });
-		});
+router.get("/favorites", (req, res) => {
+  const userId = req.user.id; // <-- not sure if that's right
+
+  db.query("SELECT * FROM favorites WHERE user_id = $1", [userId])
+    .then((data) => {
+      const favoriteItems = data.rows;
+      res.json({ favoriteItems });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
 });
 
 module.exports = router;
