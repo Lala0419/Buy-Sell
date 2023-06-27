@@ -13,6 +13,7 @@
 
   .status {
     margin-bottom: 50px;
+
   }
 
   #rating {
@@ -21,6 +22,7 @@
     // background-color: blue;
     align-items: center;
   }
+
   .container {
     margin-top: 20px;
     display: flex;
@@ -40,13 +42,19 @@
         // align-items: start;
         // background-color: yellow;
       }
-      .status {
-        display: inline-block;
-        position: relative;
-        position: absolute;
-        // bottom:0;
-        // right:0;
+
+      .fa-heart {
+        // display: inline-block;
+        // position: relative;
+        // position: absolute;
+        color: grey;
+        font-size: 35px;
       }
+
+      .fa-heart:hover {
+        color: rgb(246, 61, 61);
+      }
+
     }
 
     #text_container {
