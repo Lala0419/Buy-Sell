@@ -1,5 +1,5 @@
 INSERT INTO items
-(id, name, price, status, description, seller_id, date, photo)
+(name, price, status, description, seller_id, date, photo)
 VALUES
 ('The Victorian Styled Gold Mirror', 1890, true, 'This mirror is a beautiful mirror that shows excellent craftsmanship. A true one in a kind...', 1, '2023-05-20', 'https://cdn.shopify.com/s/files/1/0780/3843/products/JamesGoldFullLengthWEBUGC_1400x.jpg?v=1645787317'),
 ('Henry the Great', 6500, true, 'A tresure to have in your livingroom...', 1, '2023-05-21', 'https://cdn.shopify.com/s/files/1/0612/4453/9106/products/72_10ddb8d7-1b6d-426c-a31f-eec888359e9f_1080x.jpg?v=1647309400'),

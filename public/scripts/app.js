@@ -2,6 +2,38 @@
 
 $(() => {
 
+  const getNewItemRow = (item) => {
+    const $newItem = `
+    <article class="new_item">
+      <span>
+        <img class="new_item_photo" alt="new-item-photo" src=${item.photo}/>
+      </span>
+      <span class="name_price">
+        <h4 class="new_item_name">${item.name}</h4>
+        <h4 class="new_item_price">${item.price}</h4>
+        <p class="new_item_description">${item.description}</p>
+      </span>
+    </article>
+    `
+    return $newItem;
+  }
+
+  const getNewMirrors = () => {
+    $.ajax({
+      type: 'GET',
+      url: 'items/new_items'
+    })
+    .done((response) => {
+      console.log('response', response);
+      const $newItemsList = $(".new_items");
+
+      for(const item of response) {
+        $newItemsList.append(getNewItemRow(item))
+      }
+    });
+  }
+
+  getNewMirrors();
   $(".filter").click(() => {
     const min_price = parseInt($('#min').val())
     const max_price = parseInt($('#max').val());
