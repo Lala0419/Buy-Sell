@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Create New Item</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+
+<body>
+  <!-- Top nav bar (fixed) - copy/pasted EunSoo's item code for nav, not sure if that's correct -->
+  <nav>
+    <img src="https://i.pinimg.com/550x/33/81/b1/3381b1684477e149d7cbd222fb9d6263.jpg"
+    style="width: 40px; height: 40px; object-fit: cover" class="logo"></img>
+
+    <!-- my code starts here -->
+    <div class="container">
+      <h1>Create Item</h1>
+      <div class="form-container">
+        <form id="create-item-form" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="item-name">Item Name</label>
+            <input type="text" id="item-name" name="item-name" required>
+          </div>
+          <div class="form-group">
+            <label for="item-description">Description</label>
+            <textarea id="item-description" name="item-description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="item-price">Price</label>
+            <input type="number" id="item-price" name="item-price" required>
+          </div>
+          <div class="form-group">
+            <label for="item-image">Image</label>
+            <input type="file" id="item-image" name="item-image" accept="image/*" required>
+          </div>
+          <div class="form-group">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+</body>
+
+</html>
