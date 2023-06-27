@@ -13,7 +13,6 @@
 
   .status {
     margin-bottom: 50px;
-
   }
 
   #rating {
@@ -22,52 +21,36 @@
     // background-color: blue;
     align-items: center;
   }
-
   .container {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
-    justify-items: space-between;
 
 
     #photo_and_favourite {
       // position: relative;
-      // background-color: blue;
-      width: 70%;
+      width: 60%;
       .item_photo {
-        padding-right: 50px;
-        width: 100%;
-        height: auto;
-        // align-content: start;
-        // align-items: start;
-        // background-color: yellow;
+        // display: block;
+        width: 90%;
+        align-content: start;
       }
-
-      .fa-heart {
-        // display: inline-block;
-        // position: relative;
-        // position: absolute;
-        color: grey;
-        font-size: 35px;
+      .status {
+        display: inline-block;
+        position: relative;
+        position: absolute;
+        // bottom:0;
+        // right:0;
       }
-
-      .fa-heart:hover {
-        color: rgb(246, 61, 61);
-      }
-
     }
 
     #text_container {
       display: flex;
       direction: row;
-      width: 50%;
 
-      #item_text_box {
-        width: 100%;
-        // background-color: blue;
-      }
-      .item_price {
-        margin-bottom: 50px;
+      .ite_price {
+        margin-bottom: 20px;
+        background-color: yellow;
       }
 
       #contact {
