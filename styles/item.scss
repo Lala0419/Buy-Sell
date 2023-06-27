@@ -25,15 +25,20 @@
     margin-top: 20px;
     display: flex;
     flex-direction: row;
+    justify-items: space-between;
 
 
     #photo_and_favourite {
       // position: relative;
-      width: 60%;
+      // background-color: blue;
+      width: 70%;
       .item_photo {
-        // display: block;
-        width: 90%;
-        align-content: start;
+        padding-right: 50px;
+        width: 100%;
+        height: auto;
+        // align-content: start;
+        // align-items: start;
+        // background-color: yellow;
       }
       .status {
         display: inline-block;
@@ -47,10 +52,14 @@
     #text_container {
       display: flex;
       direction: row;
+      width: 50%;
 
-      .ite_price {
-        margin-bottom: 20px;
-        background-color: yellow;
+      #item_text_box {
+        width: 100%;
+        // background-color: blue;
+      }
+      .item_price {
+        margin-bottom: 50px;
       }
 
       #contact {
