@@ -12,7 +12,7 @@ const filter = (queryParams) => {
 };
 
 // Retrieves all items for the user
-const getAllItems = (options, limit = 9) => {
+const getAllItems = (options) => {
   const queryParams = [];
   console.log(options);
   // options contain min_price & max_price
@@ -24,22 +24,15 @@ const getAllItems = (options, limit = 9) => {
   // User puts in a dollar amount for MIN or MAX price filter.
   if (options.min_price) {
     queryParams.push(options.min_price);
-    queryString += `${filter(queryParams)} price >= $${queryParams.length}`;
+    queryString += ` ${filter(queryParams)} price >= $${queryParams.length} `;
   }
   if (options.max_price) {
     queryParams.push(options.max_price);
-    queryString += `${filter(queryParams)} price <= $${queryParams.length}`;
+    queryString += ` ${filter(queryParams)} price <= $${queryParams.length} `;
   }
 
-  queryString += `
-  GROUP BY items.id
-  `;
+  queryString += `ORDER BY price;`;
 
-  queryParams.push(limit);
-  queryString += `
-  ORDER BY price
-  LIMIT $${queryParams.length};
-  `;
   console.log(queryParams, queryString);
 
   return db.query(queryString, queryParams).then((res) => {
