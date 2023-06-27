@@ -14,7 +14,7 @@ const filter = (queryParams) => {
 // Retrieves all items for the user
 const getAllItems = (options) => {
   const queryParams = [];
-  console.log(options);
+  // console.log(options);
   // options contain min_price & max_price
   let queryString = `
   SELECT items.*
@@ -33,10 +33,10 @@ const getAllItems = (options) => {
 
   queryString += `ORDER BY price;`;
 
-  console.log(queryParams, queryString);
+  // console.log(queryParams, queryString);
 
   return db.query(queryString, queryParams).then((res) => {
-    console.log(res.rows);
+    // console.log(res.rows);
     return res.rows;
   });
 };
@@ -53,9 +53,16 @@ const getNewItems = () => {
   `
     )
     .then((res) => {
-      console.log(res.rows);
       return res.rows;
     });
 };
 
-module.exports = { getAllItems, getNewItems };
+// Single item query
+const getItemById = (itemId) => {
+  return db.query(`SELECT * FROM items WHERE id = $1`, [itemId]).then((res) => {
+    console.log(res.rows[0]);
+    return res.rows[0];
+  });
+};
+
+module.exports = { getAllItems, getNewItems, getItemById };
