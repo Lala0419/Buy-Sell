@@ -10,6 +10,7 @@ const router = express.Router();
 const db = require("../db/connection");
 const userQueries = require("../db/queries/register_login.js");
 
+// according to server.js this route is actually localhost8080/users
 router.get("/", (req, res) => {
   res.render("index");
 });
