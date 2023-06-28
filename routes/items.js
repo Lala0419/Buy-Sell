@@ -39,4 +39,21 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.post("/:id/status", (req, res) => {
+  const statusBoolean = req.body.itemStatus === "true";
+  console.log(req.body.itemId, statusBoolean);
+
+  itemQueries
+    .changeItemStatus(req.body.itemId, statusBoolean)
+    .then((item) => {
+      console.log("status post finished");
+      // res.send("status changed");
+      res.redirect("back");
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;
