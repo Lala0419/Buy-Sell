@@ -1,4 +1,39 @@
 <!-- Top nav bar (fixed) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <style>
+ nav {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: grey;
+  box-shadow:2px 2px 2px rgb(142, 140, 140);
+  background: white;
+
+
+
+  .logo {
+    margin-left: 1%;
+    width: 30px;
+    height: 30px;
+    object-fit: fill;
+    border-radius: 20px;
+    }
+
+  .container1 {
+    padding-right: 1%;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+</style>
+</head>
+<body>
 <nav>
   <img src="https://i.pinimg.com/550x/33/81/b1/3381b1684477e149d7cbd222fb9d6263.jpg"
   style="width: 40px; height: 40px; object-fit: cover" class="logo"></img>
@@ -7,6 +42,6 @@
     <span class="new_item">New item</span>
     <span class="my_messages">My Messages</span>
     <span class="my_favourites">My Favourites</span>
-    <span class="Login/Register">Login/Register</span>
+    <span class="Login/Register">Logged in as <%= user.username %></span>
   </div>
 </nav>
