@@ -8,7 +8,7 @@ const getUsers = () => {
 
 const getSingleUser = (id) => {
 	return db
-		.query("SELECT * FROM users WHERE users.id = $1", id)
+		.query("SELECT * FROM users WHERE users.id = $1;", [id])
 		.then((data) => {
 			return data.rows[0];
 		});
