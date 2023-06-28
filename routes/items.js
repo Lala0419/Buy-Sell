@@ -26,4 +26,34 @@ router.get("/new_items", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  itemQueries
+    .getItemById(req.params.id)
+    .then((item) => {
+      console.log("item", item);
+      res.render("item.ejs", { item, user: { id: 1 } });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: err.message });
+    });
+});
+
+router.post("/:id/status", (req, res) => {
+  const statusBoolean = req.body.itemStatus === "true";
+  console.log(req.body.itemId, statusBoolean);
+
+  itemQueries
+    .changeItemStatus(req.body.itemId, statusBoolean)
+    .then((item) => {
+      console.log("status post finished");
+      // res.send("status changed");
+      res.redirect("back");
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;
