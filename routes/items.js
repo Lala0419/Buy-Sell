@@ -26,4 +26,17 @@ router.get("/new_items", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  itemQueries
+    .getItemById(req.params.id)
+    .then((item) => {
+      console.log("item", item);
+      res.render("item.ejs", { item, user: { id: 1 } });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;
