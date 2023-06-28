@@ -38,18 +38,27 @@
 
     <section class="item">
       <h1 class="item_name"><%= item.name %></h1>
-      <span class="status">
-        <% if (item.status === true) { %>
-          Available
-        <% } else { %>
-          Not Available
-          <% } %>
-      </span>
+      <div>
+        <% if (user.id === item.seller_id) { %>
+          <i class="fa-solid fa-circle
+          <% if (item.status=== true) { %>
+            green-color
+            <% } %>
+            " data-item-status="<%= item.status %>" data-item-id=" <%= item.id %>"></i>
+            <span class="status" id="itemStatusMessage">
+              <% if (item.status === true) { %>
+                Available
+                <% } else { %>
+                  Unavailable
+                  <% } %>
+                </span>
+        <% } %>
+      </div>
 
     <section class="container">
       <span id="photo_and_favourite">
         <img class="item_photo" alt="item-photo" src="<%= item.photo %>" />
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart" data-item="<%= item.id %>"></i>
       </span>
 
       <div id="text_container">
@@ -74,7 +83,7 @@
 
     </section>
 
-    <section class="items"></section>
+    <!-- <section class="items"></section> -->
 
   </section>
 

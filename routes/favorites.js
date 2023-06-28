@@ -17,4 +17,37 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/:itemId", (req, res) => {
+  console.log("itemId", req.params.itemId);
+  db.query(
+    `
+  INSERT INTO favourites (item_id, user_id) VALUES ($1, $2);
+  `,
+    [req.params.itemId, 1]
+  )
+    .then((item) => {
+      res.json("ok");
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: err.message });
+    });
+});
+
+router.post("/:itemId/delete", (req, res) => {
+  db.query(
+    `
+  DELETE FROM favourites WHERE item_id = $1 AND user_id = $2;
+  `,
+    [req.params.itemId, 1]
+  )
+    .then((item) => {
+      res.json("removed");
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;
