@@ -65,4 +65,18 @@ const getItemById = (itemId) => {
   });
 };
 
-module.exports = { getAllItems, getNewItems, getItemById };
+const changeItemStatus = (itemId, itemStatus) => {
+  const status = !itemStatus;
+  console.log("status:", status, "itemStatus", itemStatus, "itemId", itemId);
+  // itemStatus is current status, so we need to change it the opposite way.
+  return db
+    .query(`UPDATE items SET status = $1 WHERE id = $2`, [status, itemId])
+
+    .then((res) => {
+      console.log(res.rows[0]);
+      return res.rows[0];
+      // one single item from the items table with the updated status.
+    });
+};
+
+module.exports = { getAllItems, getNewItems, getItemById, changeItemStatus };
