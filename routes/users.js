@@ -78,9 +78,12 @@ router.post("/login", (req, res) => {
 		});
 });
 
+////////////////////////////////////////////////
+//LOGOUT
+/////////////////////////////////////////////////
 router.post("/logout", (req, res) => {
-	req.session = null;
-	res.redirect("/login");
+	res.clearCookie("userId");
+	res.redirect("/users/login");
 });
 
 module.exports = router;

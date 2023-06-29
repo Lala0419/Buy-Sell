@@ -18,18 +18,21 @@
 	<body>
 		<%- include("partials/_nav") %>
 		<div class="top">
-			<h1>Message with Kei</h1>
-			<h2>Alice</h2>
+			<h1>Dandelion</h1>
+			<% if (user.id === 1) { %>
+
+			<h2>Message from <%= users.find(user=>user.id === 4).username %></h2>
+      <!-- <p><%= users.find(user=>user.id === 3).username %></p> -->
 		</div>
 		<section class="dummy_message">
-			<img src="" alt="logo" />
-			<p>Hi, is this product available?</p>
+			<img src="/img/user2_profileLogo.jpeg" alt="logo" />
+			<p>Hi, is this item available?</p>
 		</section>
 
-		<% for(let message of messages){ %>
+		<% for(let i = 1; i < messages.length; i++){ %>
 		<section id="messages" class="message hide">
-			<p><%= message.message %></p>
-			<img src="" alt="logo" />
+			<p><%= messages[i].message %></p>
+			<img src="/img/user1_profileLogo.jpeg" alt="logo" />
 		</section>
 		<%}%>
 
@@ -40,8 +43,30 @@
 				id="message"
 				name="message"
 				value=""
-				placeholder="Yes it is!"
+				placeholder="Yes, it is!"
 			/><br /><br />
+			<% }else { %>
+<h2>Message to Alice</h2>
+		</div>
+
+		<% for(let message of messages){ %>
+		<section id="messages" class="message hide">
+			<p><%= message.message %></p>
+			<img src="/img/user2_profileLogo.jpeg" alt="logo" />
+		</section>
+		<%}%>
+
+		<form action="/messages" method="POST" id="messagesForm">
+			<input
+				class="input"
+				type="text"
+				id="message"
+				name="message"
+				value=""
+				placeholder="Is this still available?"
+			/><br /><br />
+
+     <% } %>
 			<input class="button" type="submit" value="Submit" id="fetch-messages" />
 		</form>
 	</body>
