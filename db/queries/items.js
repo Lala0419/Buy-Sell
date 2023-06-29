@@ -31,7 +31,7 @@ const getAllItems = (options) => {
     queryString += ` ${filter(queryParams)} price <= $${queryParams.length} `;
   }
 
-  queryString += `ORDER BY price;`;
+  queryString += `ORDER BY price DESC;`;
 
   // console.log(queryParams, queryString);
 
@@ -79,4 +79,19 @@ const changeItemStatus = (itemId, itemStatus) => {
     });
 };
 
-module.exports = { getAllItems, getNewItems, getItemById, changeItemStatus };
+const deleteItemListing = (itemId) => {
+  return db.query(`DELETE FROM items WHERE id = $1`, [itemId]).then((res) => {
+    return db
+      .query(`DELETE FROM favourites WHERE item_id = $1`, [itemId])
+      .then((res) => {
+        return res.rows[0];
+      });
+  });
+};
+module.exports = {
+  getAllItems,
+  getNewItems,
+  getItemById,
+  changeItemStatus,
+  deleteItemListing,
+};
