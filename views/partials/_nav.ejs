@@ -43,5 +43,9 @@
     <span class="my_messages">My Messages</span>
     <span class="my_favourites">My Favourites</span>
     <span class="Login/Register">Logged in as <%= user.username %></span>
+    <form method="POST" action="/users/logout">
+      <button type="submit">Log out</button>
+    </form>
+
   </div>
 </nav>
