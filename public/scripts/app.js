@@ -4,7 +4,7 @@ $(() => {
 
   const getNewItemRow = (item) => {
     const $newItem = `
-    <a href="/items/${item.id}">
+    <a style="text-decoration: none;" href="/items/${item.id}">
       <article class="new_item">
         <span>
           <img class="new_item_photo" alt="new-item-photo" src=${item.photo}/>
@@ -65,9 +65,9 @@ $(() => {
 
   const getItemRow = (item) => {
     const $item = `
-    <a href="/items/${item.id}">
+    <a style="text-decoration: none;" href="/items/${item.id}">
       <article class="item">
-        <span>
+        <span id="item_photo_container">
         <img class="item_photo" alt="item-photo" src=${item.photo}/>
         </span>
         <span class="name_price">

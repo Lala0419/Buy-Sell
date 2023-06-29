@@ -37,7 +37,14 @@
 
 
     <section class="item">
+      <div class="title_remove">
       <h1 class="item_name"><%= item.name %></h1>
+      <div>
+        <% if (user.id === item.seller_id) { %>
+      <button id="remove" data-item-id=" <%= item.id %> ">Remove Item</button>
+        <% } %>
+      </div>
+      </div>
       <div>
         <% if (user.id === item.seller_id) { %>
           <i class="fa-solid fa-circle
@@ -81,6 +88,7 @@
           <a href="/messages">
             <button id="contact">Contact</button>
           </a>
+
         </div>
       </div>
 

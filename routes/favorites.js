@@ -17,6 +17,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:itemId", (req, res) => {
+  db.query("SELECT * FROM favourites WHERE item_id = $1", [req.params.itemId])
+    .then((data) => {
+      const favoriteItems = data.rows;
+      res.json({ favoriteItems });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 router.post("/:itemId", (req, res) => {
   console.log("itemId", req.params.itemId);
   db.query(
