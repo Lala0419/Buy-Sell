@@ -21,7 +21,8 @@
 			<h1>Dandelion</h1>
 			<% if (user.id === 1) { %>
 
-			<h2>Message from <%= user.id === 3 %> </h2>
+			<h2>Message from <%= users.find(user=>user.id === 4).username %></h2>
+      <!-- <p><%= users.find(user=>user.id === 3).username %></p> -->
 		</div>
 		<section class="dummy_message">
 			<img src="/img/user2_profileLogo.jpeg" alt="logo" />

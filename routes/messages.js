@@ -24,11 +24,14 @@ router.get("/", (req, res) => {
 			.getMessage(reciever_id)
 			.then((data) => {
 				console.log("data", data);
-				const templateVars = {
-					messages: data,
-					user: user,
-				};
-				res.render("messages", templateVars);
+				userQueries.getUsers().then((users) => {
+					const templateVars = {
+						messages: data,
+						user: user,
+						users: users,
+					};
+					res.render("messages", templateVars);
+				});
 				//return res.json({ data });
 			})
 			.catch((err) => {
