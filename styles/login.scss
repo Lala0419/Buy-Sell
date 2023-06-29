@@ -1,4 +1,47 @@
-button {
+.form {
+	display: flex;
+	flex-direction: column;
+}
+label {
+	padding-bottom: 0.5rem;
+}
+
+.button-register {
 	margin: 2rem;
-	width: 100%;
+	// width: 100%;
+	border-radius: 10px;
+	width: 10em;
+	height: 5ex;
+	background-image: linear-gradient(120deg, #f3a240 50%, #fe5900);
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+.button-login {
+	margin: 2rem;
+	// width: 100%;
+	border-radius: 10px;
+	width: 10em;
+	height: 5ex;
+	background-image: linear-gradient(120deg, #ffe11f 50%, #ecff1b);
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+
+.button-register:active {
+	box-shadow: 2px 2px 5px #f3a240;
+}
+.button-register:hover {
+	box-shadow: 2px 2px 5px #f3a240;
+}
+.button-login:active {
+	box-shadow: 2px 2px 5px #ffe11f;
+}
+.button-login:hover {
+	box-shadow: 2px 2px 5px #ffe11f;
 }

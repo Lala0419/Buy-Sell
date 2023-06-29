@@ -29,6 +29,7 @@ router.get("/", (req, res) => {
 						messages: data,
 						user: user,
 						users: users,
+						// onMessage: true,
 					};
 					res.render("messages", templateVars);
 				});

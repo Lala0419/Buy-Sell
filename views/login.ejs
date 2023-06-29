@@ -19,15 +19,15 @@
 
 	<body>
 		<h1>login page</h1>
-		<form action="/users/login" method="POST">
-			<label for="username">user name:</label><br />
+		<form class="form" action="/users/login" method="POST">
+			<label for="username">user name:</label>
 			<input type="text" id="username" name="username" value="" /><br />
-			<label for="email">password:</label><br />
+			<label for="email">password:</label>
 			<input type="password" id="email" name="email" value="" /><br /><br />
-			<input type="submit" value="Submit" />
+			<input class="button-login" type="submit" value="Login" />
 		</form>
 		<a href="/users/register">
-			<button>register</button>
+			<button class="button-register">Register</button>
 		</a>
 	</body>
 </html>
