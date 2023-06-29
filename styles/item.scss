@@ -39,26 +39,31 @@
         width: 90%;
         align-content: start;
       }
-      .fa-heart {
-        font-size: 30px;
-        display: inline-block;
-        position: relative;
-        position: absolute;
-        // bottom:0;
-        // right:0;
-      }
-      .red-color {
-        color: red;
-      }
+
     }
 
     #text_container {
       display: flex;
       direction: row;
 
-      .ite_price {
+      .name_heart {
+        display: flex;
+        justify-items: start;
+        align-items: center;
+
+      .fa-heart {
+        margin-left: 10px;
+        font-size: 25px;
+
+        &.red-color {
+          color: red;
+        }
+      }
+      }
+
+      .item_price {
         margin-bottom: 20px;
-        background-color: yellow;
+        // background-color: yellow;
       }
 
       #contact {

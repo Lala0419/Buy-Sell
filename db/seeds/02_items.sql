@@ -8,7 +8,7 @@ VALUES
 ('Round Rattan Mirror', 5000, true, 'A simple but elegant round mirror for your hallway...', 1, '2023-06-22', 'https://cdn.shopify.com/s/files/1/0612/4453/9106/products/MedelRoundRattanMirror24Inch_f1123f45-0fa1-4cb2-b413-90d7efeffef4_1080x.jpg?v637101983'),
 ('LAURY METAL RECTANGLE', 4800, true, 'metallic frame', 1, '2023-05-02', 'https://cdn.shopify.com/s/files/1/0612/4453/9106/products/59_b6ede3d9-1921-46b2-8b4d-6fc63fe10467_1080x.jpg?v=1647309312'),
 ('Kelly Klarson', 2030, true, 'Special one', 1, '2023-04-20', 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png'),
-('Elise', 100, true, 'description', 1, '2023-03-20', 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png'),
+('Elise', 100, true, 'description', 1, '2023-03-20', 'https://westmirrors.ca/cdn/shop/products/Untitleddesign_47_f9ab1bcd-164d-4edc-a2bd-4f083f00d9c4_720x.jpg?v=1637101399'),
 ('Notebook', 150, true, 'description', 1, '2023-02-20', 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png'),
 ('Pencil Stand', 120, true, 'description', 1, '2023-01-20', 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png'),
 ('Reflection', 150, true, 'description', 1, '2023-01-01', 'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png'),
