@@ -1,8 +1,8 @@
 $(() => {
 
-  $(".container").find(".fa-heart").on('click', (event) => {
-    console.log("heart clicked", event.target);
+  $(".name_heart").find(".fa-heart").on('click', (event) => {
     $(event.target).toggleClass('red-color');
+    console.log("heart clicked", event.target);
 
     const itemId = $(event.target).data("item")
 
@@ -27,6 +27,7 @@ $(() => {
   })
 
   $(() => {
+    // userid = seller_id (if userId = 1)
     $(".item").find(".fa-circle").on('click', (event) => {
       console.log("status changed", event.target);
       $(event.target).toggleClass('green-color');
