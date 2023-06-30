@@ -56,18 +56,22 @@ app.get("/", (req, res) => {
 	const userId = req.cookies.userId;
 
 	//do they NOT have a cookie?
-	if (!userId) {
-		return res.status(401).send("you must login first");
-	}
+	if (userId) {
+    userQueries.getSingleUser(userId).then((user) => {
+      console.log("user", user);
+      const templateVars = {
+        user: user,
+      };
+      res.render("index", templateVars);
+    });
+		// return res.status(401).send("you must login first");
+	} else {
+    res.render("index");
+
+  }
 
 	// get a single user obj
-	userQueries.getSingleUser(userId).then((user) => {
-		console.log("user", user);
-		const templateVars = {
-			user: user,
-		};
-		res.render("index", templateVars);
-	});
+
 });
 
 app.listen(PORT, () => {

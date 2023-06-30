@@ -29,7 +29,11 @@ router.get("/new_items", (req, res) => {
 
 router.get("/create", (req, res) => {
   getSingleUser(req.cookies.userId).then((user) => {
-    res.render("create-item.ejs", { user });
+    if (!user) {
+      res.redirect("/users/login");
+    } else {
+      res.render("create-item.ejs", { user });
+    }
   });
 });
 

@@ -80,10 +80,17 @@ body {
     <a href="/items/create" class="link"><span class="new_item">New item</span></a>
     <a href="/messages/17" class="link"><span class="my_messages">  My Messages</span></a>
     <a href="/favorites" class="link"><span class="my_favourites">My Favourites</span></a>
-    <span class="Login/Register">Logged in as <%= user.username %></span>
-    <form method="POST" action="/users/logout">
-      <button class="logout" type="submit">Log out</button>
-    </form>
 
+    <% if (typeof user === "object") { %>
+
+      <span class="Login/Register">
+        Logged in as <%= user.username %></span>
+        <form method="POST" action="/users/logout">
+          <button class="logout" type="submit">Log out</button>
+        </form>
+
+    <% } else { %>
+      <a href="/users/login" class="link"><span class="login">Login/Register</span></a>
+      <% } %>
   </div>
 </nav>

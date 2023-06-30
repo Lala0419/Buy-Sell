@@ -14,7 +14,8 @@ router.get("/:itemId", (req, res) => {
 	const reciever_id = req.body.user_id;
 	//do they NOT have a cookie?
 	if (!userId) {
-		return res.status(401).send("you must login first");
+      res.redirect("/users/login");
+		// return res.status(401).send("you must login first");
 	}
 
 	//get a single use obj
