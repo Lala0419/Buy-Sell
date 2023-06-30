@@ -38,6 +38,9 @@ router.get("/create", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  if (!req.cookies.userId) {
+    res.redirect("/users/login");
+  }
   itemQueries
     .getItemById(req.params.id)
     .then((item) => {
