@@ -9,7 +9,6 @@ const {
   findFavByUserIdItemId,
   findFavouritesByUserId,
 } = require("../db/queries/favourites");
-const { getSingleUser } = require(`../db/queries/users`);
 
 router.get("/", (req, res) => {
   const userID = req.cookies.userId; // userID is hard coded
