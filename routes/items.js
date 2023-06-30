@@ -73,7 +73,7 @@ router.post("/create", (req, res) => {
   const seller_id = 1; // the user is currently hard coded
   const date = new Date();
   const status = true;
-  console.log(req.body);
+  console.log("hello", req.body);
   itemQueries
     .createItem(
       item_name,
@@ -85,7 +85,7 @@ router.post("/create", (req, res) => {
       item_photo
     )
     .then((item) => {
-      res.sendStatus(200);
+      res.redirect(`/items/${item.id}`);
     })
     .catch((err) => {
       console.error(err);
