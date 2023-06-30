@@ -114,7 +114,7 @@ const getFavorites = (favoritesArray) => {
   }
   console.log(items);
   return items;
-}
+};
 
 const deleteItemListing = (itemId) => {
   return db.query(`DELETE FROM items WHERE id = $1`, [itemId]).then((res) => {

@@ -28,9 +28,8 @@ router.get("/new_items", (req, res) => {
 });
 
 router.get("/create", (req, res) => {
-  res.render("create-item.ejs").catch((err) => {
-    console.error(err);
-    res.status(500).json({ error: err.message });
+  getSingleUser(req.cookies.userId).then((user) => {
+    res.render("create-item.ejs", { user });
   });
 });
 
@@ -95,6 +94,7 @@ router.post("/create", (req, res) => {
         .json({ message: "An error occurred. Please try again later." });
     });
 });
+
 router.post("/:id/delete", (req, res) => {
   itemQueries
     .deleteItemListing(req.body.itemId)

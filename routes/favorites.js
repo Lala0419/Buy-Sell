@@ -2,22 +2,24 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db/connection");
 const itemQueries = require(`../db/queries/items`);
+const { getSingleUser } = require(`../db/queries/users`);
 const {
   addToFavourites,
   removeFromFavourites,
   findFavByUserIdItemId,
+  findFavouritesByUserId,
 } = require("../db/queries/favourites");
 
 router.get("/", (req, res) => {
-  const userID = 1; // userID is hard coded
+  const userID = req.cookies.userId; // userID is hard coded
 
-  db.query("SELECT * FROM favourites WHERE user_id = $1", [userID])
+  findFavouritesByUserId(userID)
     .then((data) => {
       const favoriteItems = data.rows;
-      const favorites = itemQueries.getFavorites;
-      // console.log(favorites(favoriteItems));
-      // res.json({ favoriteItems });
-      res.render("favorites", { favoriteItems });
+      console.log(favoriteItems);
+      getSingleUser(req.cookies.userId).then((user) => {
+        res.render("favorites", { favoriteItems, user });
+      });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
