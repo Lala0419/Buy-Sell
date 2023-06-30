@@ -79,4 +79,48 @@ const changeItemStatus = (itemId, itemStatus) => {
     });
 };
 
-module.exports = { getAllItems, getNewItems, getItemById, changeItemStatus };
+const createItem = (
+  name,
+  description,
+  price,
+  seller_id,
+  date,
+  status,
+  photo
+) => {
+  return db
+    .query(
+      `INSERT INTO items (name, description, price, seller_id, date, status, photo) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+      [name, description, price, seller_id, date, status, photo]
+    )
+    .then((res) => {
+      console.log(res.rows[0]);
+      return res.rows[0];
+    });
+};
+
+const getFavorites = (favoritesArray) => {
+  let items = [];
+  for (const favorite of favoritesArray) {
+    const itemId = favorite.item_id;
+    const queryParams = [itemId];
+    const queryString = `
+  SELECT * FROM items WHERE items.id = $1
+  `;
+    db.query(queryString, queryParams).then((res) => {
+      items = [...items, res.rows[0]];
+      // console.log(items);
+    });
+  }
+  console.log(items);
+  return items;
+};
+
+module.exports = {
+  getAllItems,
+  getNewItems,
+  getItemById,
+  changeItemStatus,
+  createItem,
+  getFavorites,
+};

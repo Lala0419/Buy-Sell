@@ -1,14 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db/connection");
+const itemQueries = require(`../db/queries/items`);
 
 router.get("/", (req, res) => {
-  // const userId = req.user.id; // <-- not sure if that's right..
-  const userID = 1;
+  const userID = 1; // userID is hard coded
 
   db.query("SELECT * FROM favourites WHERE user_id = $1", [userID])
     .then((data) => {
       const favoriteItems = data.rows;
+      const favorites = itemQueries.getFavorites;
+      // console.log(favorites(favoriteItems));
       // res.json({ favoriteItems });
       res.render("favorites", { favoriteItems });
     })
