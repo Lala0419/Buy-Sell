@@ -23,9 +23,7 @@ router.get("/register", (reg, res) => {
 
 router.post("/register", (req, res) => {
   const newUser = req.body;
-  console.log("req.body;", req.body);
   if (!newUser) {
-    console.log("req.body", req.body);
     return res
       .status(403)
       .render("error", { message: "Provide name to register!" });
@@ -52,9 +50,7 @@ router.get("/login", (req, res) => {
 
 router.post("/login", (req, res) => {
   const username = req.body.username;
-  console.log("body", req.body);
   if (!username) {
-    console.log("line 41", username);
     return res.status(403).json("error");
     // .render("error", { message: "We need your name to login!" });
   }
@@ -62,7 +58,6 @@ router.post("/login", (req, res) => {
   userQueries
     .login(username)
     .then((user) => {
-      console.log("user", user);
       if (!user) {
         return res
           .status(403)

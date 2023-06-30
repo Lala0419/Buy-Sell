@@ -13,7 +13,6 @@ $(document).ready(() => {
       contentType: false
     })
       .done(() => {
-        console.log('Item created successfully');
         // do i need to show a success message?
       })
       .fail(err => {

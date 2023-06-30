@@ -27,7 +27,7 @@ const findFavByUserIdItemId = (itemId, userId) => {
 
 const findFavouritesByUserId = (userId) => {
   return db.query(
-    `SELECT Items.name, Items.price, Items.photo, Items.description, Favourites.id, Favourites.user_id
+    `SELECT Items.name, Items.price, Items.photo, Items.description, Items.id, Favourites.user_id
     FROM Favourites JOIN Items ON Items.id=Favourites.item_id
     WHERE Favourites.user_id = $1`,
     [userId]

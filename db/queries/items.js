@@ -14,7 +14,7 @@ const filter = (queryParams) => {
 // Retrieves all items for the user
 const getAllItems = (options) => {
   const queryParams = [];
-  // console.log(options);
+
   // options contain min_price & max_price
   let queryString = `
   SELECT items.*
@@ -33,10 +33,7 @@ const getAllItems = (options) => {
 
   queryString += `ORDER BY price DESC;`;
 
-  // console.log(queryParams, queryString);
-
   return db.query(queryString, queryParams).then((res) => {
-    // console.log(res.rows);
     return res.rows;
   });
 };
@@ -60,20 +57,17 @@ const getNewItems = () => {
 // Single item query
 const getItemById = (itemId) => {
   return db.query(`SELECT * FROM items WHERE id = $1`, [itemId]).then((res) => {
-    console.log(res.rows[0]);
     return res.rows[0];
   });
 };
 
 const changeItemStatus = (itemId, itemStatus) => {
   const status = !itemStatus;
-  console.log("status:", status, "itemStatus", itemStatus, "itemId", itemId);
   // itemStatus is current status, so we need to change it the opposite way.
   return db
     .query(`UPDATE items SET status = $1 WHERE id = $2`, [status, itemId])
 
     .then((res) => {
-      console.log(res.rows[0]);
       return res.rows[0];
       // one single item from the items table with the updated status.
     });
@@ -94,7 +88,6 @@ const createItem = (
       [name, description, price, seller_id, date, status, photo]
     )
     .then((res) => {
-      console.log(res.rows[0]);
       return res.rows[0];
     });
 };
@@ -109,10 +102,8 @@ const getFavorites = (favoritesArray) => {
   `;
     db.query(queryString, queryParams).then((res) => {
       items = [...items, res.rows[0]];
-      // console.log(items);
     });
   }
-  console.log(items);
   return items;
 };
 

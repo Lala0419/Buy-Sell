@@ -16,8 +16,8 @@
 
 
 		<script src="/vendor/jquery-3.0.0.js"></script>
-		<script defer src="/scripts/app.js"></script>
-    <script defer src="/scripts/item.js"></script>
+    <script defer src="/scripts/favorites.js"></script>
+
 	</head>
 
 	<body>
@@ -47,9 +47,9 @@
                 <h3 class="item_price"><%= item.price %> CAD</h3>
               </div>
               <span class="description"><%= item.description %></span>
-              <a href="/messages">
-                <button id="contact">Contact</button>
-              </a>
+              <!-- <a href="/messages"> -->
+                <button class="contact-button" data-item="<%= item.id %>">Contact</button>
+              <!-- </a> -->
             </div>
           </div>
 

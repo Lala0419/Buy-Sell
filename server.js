@@ -51,7 +51,7 @@ app.use("/favorites", favoritesRoutes);
 
 app.get("/", (req, res) => {
 	//res.render("index");
-	//console.log(req.cookies);
+
 	//grab the userId from cookie
 	const userId = req.cookies.userId;
 
