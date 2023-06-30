@@ -24,8 +24,18 @@ const findFavByUserIdItemId = (itemId, userId) => {
     [itemId, userId]
   );
 };
+
+const findFavouritesByUserId = (userId) => {
+  return db.query(
+    `SELECT Items.name, Items.price, Items.photo, Items.description, Favourites.id, Favourites.user_id
+    FROM Favourites JOIN Items ON Items.id=Favourites.item_id
+    WHERE Favourites.user_id = $1`,
+    [userId]
+  );
+};
 module.exports = {
   addToFavourites,
   removeFromFavourites,
   findFavByUserIdItemId,
+  findFavouritesByUserId,
 };

@@ -1,21 +1,23 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db/connection");
+const itemQueries = require(`../db/queries/items`);
+const { getSingleUser } = require(`../db/queries/users`);
 const {
   addToFavourites,
   removeFromFavourites,
   findFavByUserIdItemId,
+  findFavouritesByUserId,
 } = require("../db/queries/favourites");
 const { getSingleUser } = require(`../db/queries/users`);
 
 router.get("/", (req, res) => {
-  // const userId = req.user.id; // <-- not sure if that's right..
-  const userID = 1;
+  const userID = req.cookies.userId; // userID is hard coded
 
-  db.query("SELECT * FROM favourites WHERE user_id = $1", [userID])
+  findFavouritesByUserId(userID)
     .then((data) => {
       const favoriteItems = data.rows;
-      // res.json({ favoriteItems });
+      console.log(favoriteItems);
       getSingleUser(req.cookies.userId).then((user) => {
         res.render("favorites", { favoriteItems, user });
       });

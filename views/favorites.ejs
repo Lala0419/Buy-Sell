@@ -11,9 +11,13 @@
 		<link rel="stylesheet" href="/vendor/border-box.css" />
 		<link rel="stylesheet" href="/styles/main.css" />
 		<link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/favourite.css" />
+    <link rel="stylesheet" href="/styles/item.css" />
+
 
 		<script src="/vendor/jquery-3.0.0.js"></script>
 		<script defer src="/scripts/app.js"></script>
+    <script defer src="/scripts/item.js"></script>
 	</head>
 
 	<body>
@@ -23,12 +27,33 @@
 		<h1>My Favourites</h1>
     <div id="favorites">
       <% favoriteItems.forEach(function(item) { %>
-        <div class="favorite-item">
-          <h3><%= item.item_name %></h3>
-          <p><%= item.item_price %></p>
-          <p><%= item.item_description %></p>
-          <button class="remove-favorite">Remove</button>
-        </div>
+        <section class="container">
+          <span id="photo_and_favourite">
+            <img class="item_photo" alt="item-photo" src="<%= item.photo %>" />
+            <i class="fa-solid fa-heart" data-item="<%= item.id %>"></i>
+          </span>
+
+          <div id="text_container">
+            <div id="item_text_box">
+              <h2 class="name"><%= item.name %></h2>
+              <div id="price_rating">
+                <div id="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+                <h3 class="item_price"><%= item.price %> CAD</h3>
+              </div>
+              <span class="description"><%= item.description %></span>
+              <a href="/messages">
+                <button id="contact">Contact</button>
+              </a>
+            </div>
+          </div>
+
+        </section>
       <% }) %>
     </div>
 	</body>

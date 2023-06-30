@@ -27,6 +27,12 @@ router.get("/new_items", (req, res) => {
     });
 });
 
+router.get("/create", (req, res) => {
+  getSingleUser(req.cookies.userId).then((user) => {
+    res.render("create-item.ejs", { user });
+  });
+});
+
 router.get("/:id", (req, res) => {
   itemQueries
     .getItemById(req.params.id)
@@ -55,6 +61,37 @@ router.post("/:id/status", (req, res) => {
     .catch((err) => {
       console.error(err);
       res.status(500).json({ error: err.message });
+    });
+});
+
+// first create a get route that renders the createItem.ejs file in this document
+// test the route (make sure we can go to /items/create and the page renders)
+// ensure that our form in the createItem.ejs file is connected to the post route /items/create (in real life)
+
+router.post("/create", (req, res) => {
+  const { item_name, item_description, item_price, item_photo } = req.body;
+  const seller_id = 1; // the user is currently hard coded
+  const date = new Date();
+  const status = true;
+  console.log(req.body);
+  itemQueries
+    .createItem(
+      item_name,
+      item_description,
+      item_price,
+      seller_id,
+      date,
+      status,
+      item_photo
+    )
+    .then((item) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error(err);
+      res
+        .status(500)
+        .json({ message: "An error occurred. Please try again later." });
     });
 });
 
