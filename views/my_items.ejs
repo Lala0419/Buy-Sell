@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Item Page</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/item.css" />
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/item.js"></script>
+
+  <!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+
+<!-- External CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+  <!-- Top nav bar (fixed) -->
+  <%- include("partials/_nav") %>
+
+
+    <section class="item">
+      <div class="title_remove">
+      <h1 class="item_name"><%= item.name %></h1>
+      <div>
+        <% if (user.id === item.seller_id) { %>
+      <button id="remove" data-item-id=" <%= item.id %> ">Remove Item</button>
+        <% } %>
+      </div>
+      </div>
+      <div>
+        <% if (user.id === item.seller_id) { %>
+          <i class="fa-solid fa-circle
+          <% if (item.status=== true) { %>
+            green-color
+            <% } %>
+            " data-item-status="<%= item.status %>" data-item-id=" <%= item.id %>"></i>
+            <span class="status" id="itemStatusMessage">
+              <% if (item.status === true) { %>
+                Available
+                <% } else { %>
+                  Unavailable
+                  <% } %>
+                </span>
+        <% } %>
+      </div>
+
+    <section class="container">
+      <span id="photo_and_favourite">
+        <img class="item_photo" alt="item-photo" src="<%= item.photo %>" />
+
+      </span>
+
+      <div id="text_container">
+        <div id="item_text_box">
+          <div class="name_heart">
+            <h2 class="name"><%= item.name %></h2>
+            <i class="fa-solid fa-heart" data-item="<%= item.id %>"></i>
+          </div>
+          <div id="price_rating">
+            <div id="rating">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <h3 class="item_price"><%= item.price %> CAD</h3>
+          </div>
+          <span class="description"><%= item.description %></span>
+
+            <button id="contact">Contact</button>
+
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- <section class="items"></section> -->
+
+  </section>
+
+</body>
+
+</html>
