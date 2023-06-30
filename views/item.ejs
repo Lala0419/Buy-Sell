@@ -40,7 +40,7 @@
       <div class="title_remove">
       <h1 class="item_name"><%= item.name %></h1>
       <div>
-        <% if (user.id === item.seller_id) { %>
+        <% if (user && user.id === item.seller_id) { %>
       <button id="remove" data-item-id=" <%= item.id %> ">Remove Item</button>
         <% } %>
       </div>
