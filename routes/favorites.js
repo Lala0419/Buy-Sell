@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db/connection");
+const {
+  addToFavourites,
+  removeFromFavourites,
+  findFavByUserIdItemId,
+} = require("../db/queries/favourites");
 
 router.get("/", (req, res) => {
   // const userId = req.user.id; // <-- not sure if that's right..
@@ -18,7 +23,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:itemId", (req, res) => {
-  db.query("SELECT * FROM favourites WHERE item_id = $1", [req.params.itemId])
+  findFavByUserIdItemId(req.params.itemId, req.cookies.userId)
     .then((data) => {
       const favoriteItems = data.rows;
       res.json({ favoriteItems });
@@ -30,12 +35,7 @@ router.get("/:itemId", (req, res) => {
 
 router.post("/:itemId", (req, res) => {
   console.log("itemId", req.params.itemId);
-  db.query(
-    `
-  INSERT INTO favourites (item_id, user_id) VALUES ($1, $2);
-  `,
-    [req.params.itemId, 1]
-  )
+  addToFavourites(req.params.itemId, req.cookies.userId)
     .then((item) => {
       res.json("ok");
     })
@@ -46,12 +46,7 @@ router.post("/:itemId", (req, res) => {
 });
 
 router.post("/:itemId/delete", (req, res) => {
-  db.query(
-    `
-  DELETE FROM favourites WHERE item_id = $1 AND user_id = $2;
-  `,
-    [req.params.itemId, 1]
-  )
+  removeFromFavourites(req.params.itemId, req.cookies.userId)
     .then((item) => {
       res.json("removed");
     })
