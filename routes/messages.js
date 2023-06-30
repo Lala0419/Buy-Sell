@@ -50,12 +50,13 @@ router.get("/:itemId", (req, res) => {
 //  SEND MESSAGES (sender)
 /////////////////////////////////////////
 
-router.post("/", (req, res) => {
+router.post("/:itemId", (req, res) => {
+  const itemId = req.params.itemId;
 	const newMessage = req.body.message;
 	messageQueries
 		.createMessage(newMessage)
 		.then((data) => {
-			res.redirect("/messages");
+			res.redirect(`/messages/${itemId}`);
 		})
 		.catch((err) => {
 			res.status(500).json({ error: err.message });
