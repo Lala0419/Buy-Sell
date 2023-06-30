@@ -19,7 +19,6 @@ router.get("/", (req, res) => {
     findFavouritesByUserId(userID)
       .then((data) => {
         const favoriteItems = data.rows;
-        console.log(favoriteItems);
         getSingleUser(req.cookies.userId).then((user) => {
           res.render("favorites", { favoriteItems, user });
         });
@@ -42,7 +41,6 @@ router.get("/:itemId", (req, res) => {
 });
 
 router.post("/:itemId", (req, res) => {
-  console.log("itemId", req.params.itemId);
   addToFavourites(req.params.itemId, req.cookies.userId)
     .then((item) => {
       res.json("ok");

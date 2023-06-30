@@ -1,34 +1,10 @@
-function fetchFavorites() {
-  $.ajax({
-    method: 'GET',
-    url: '/api/favorites'
-  })
-    .done(response => {
-      const $favoritesList = $('#favorites');
-      $favoritesList.empty();
-
-      for (const item of response.favoriteItems) {
-        const $item = $('<div>').addClass('favorite-item');// <-- may need to update
-        $('<h3>').text(item.item_name).appendTo($item);
-        $('<p>').text(item.item_price).appendTo($item);
-        $('<p>').text(item.item_description).appendTo($item);
-
-        // Heart button to remove favorite item
-        const $removeButton = $('<button>') // <-- need to update
-          .addClass('remove-favorite')
-          .text('Remove')
-          .appendTo($item);
-
-        $favoritesList.append($item);
-      }
-    })
-    .fail(err => {
-      console.error(err);
-    });
-}
-
 $(document).ready(() => {
-  fetchFavorites();
+
+  $(".contact-button").on('click', (event) => {
+    const itemId = $(event.target).data("item");
+    window.location.replace(`http://localhost:8080/messages/${itemId}`);
+});
+
 });
 
 $(document).on('click', '.remove-favorite', function () {
@@ -45,4 +21,5 @@ $(document).on('click', '.remove-favorite', function () {
     .fail(err => {
       console.error(err);
     });
+
 });

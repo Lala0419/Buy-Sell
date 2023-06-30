@@ -53,13 +53,10 @@ router.get("/:id", (req, res) => {
 
 router.post("/:id/status", (req, res) => {
   const statusBoolean = req.body.itemStatus === "true";
-  console.log(req.body.itemId, statusBoolean);
 
   itemQueries
     .changeItemStatus(req.body.itemId, statusBoolean)
     .then((item) => {
-      console.log("status post finished");
-      // res.send("status changed");
       res.redirect("back");
     })
     .catch((err) => {
@@ -77,7 +74,6 @@ router.post("/create", (req, res) => {
   const seller_id = 1; // the user is currently hard coded
   const date = new Date();
   const status = true;
-  console.log("hello", req.body);
   itemQueries
     .createItem(
       item_name,
@@ -103,8 +99,6 @@ router.post("/:id/delete", (req, res) => {
   itemQueries
     .deleteItemListing(req.body.itemId)
     .then((item) => {
-      // res.json("item successfully deleted");
-      console.log("router post for delete");
       res.redirect("/");
     })
     .catch((err) => {

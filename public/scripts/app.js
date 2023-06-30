@@ -26,7 +26,6 @@ $(() => {
       url: 'items/new_items'
     })
     .done((response) => {
-      console.log('response', response);
       const $newItemsList = $(".new_items");
 
       for(const item of response) {
@@ -50,7 +49,6 @@ $(() => {
         },
       })
       .done((response) => {
-        console.log(response);
         const $itemsList = $('.items_container');
         $itemsList.empty();
 
@@ -59,8 +57,6 @@ $(() => {
         }
       });
     }
-
-    console.log(min_price, max_price)
   })
 
   const getItemRow = (item) => {
@@ -86,7 +82,6 @@ $(() => {
       url: '/items'
     }) // need an event handler or a callback once done calling the function
     .done((response) => {
-      console.log(response);
       const $itemsList = $('.items_container');
       $itemsList.empty();
 
