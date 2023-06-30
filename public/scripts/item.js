@@ -98,8 +98,12 @@ $(() => {
 
   })
 
+  $("#contact").on('click', (event) => {
+    console.log("contact clicked")
+    window.location.replace(`http://localhost:8080/messages/${window.location.pathname.split("/")[2]}`);
 
 })
 
+});
 
 

@@ -18,7 +18,7 @@
 	<body>
 		<%- include("partials/_nav") %>
 		<div class="top">
-			<h1>Dandelion</h1>
+			<h1><%=item.name %></h1>
 			<% if (user.id === 1) { %>
 
 			<h2>Message from <%= users.find(user=>user.id === 4).username %></h2>
