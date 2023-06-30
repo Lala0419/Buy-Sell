@@ -11,7 +11,7 @@ $(() => {
         </span>
         <span class="name_price">
           <h4 class="new_item_name">${item.name}</h4>
-          <h4 class="new_item_price">${item.price}</h4>
+          <h4 class="new_item_price">${item.price} CAD</h4>
           <p class="new_item_description">${item.description}</p>
         </span>
       </article>

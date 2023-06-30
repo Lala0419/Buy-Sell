@@ -7,6 +7,15 @@ body {
 
   font-family:'Times New Roman', Times, serif;
 
+  a {
+    color: black;
+  }
+  a:hover {
+    font: bold;
+    color: rgb(87, 58, 25);
+    text-shadow: yellow 2px;
+  }
+
   .module_container {
     display: flex;
     flex-direction: column;
@@ -121,7 +130,8 @@ body {
   .items_container {
     display: grid;
     grid-gap: 50px;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
+
 
     grid-column-end: auto;
     // background-color: skyblue;
@@ -132,9 +142,11 @@ body {
 
       .item_photo {
         width: 100%;
+        max-height: 100%;
         // height: 40em;
-        object-fit:fill;
+        object-fit:cover;
         overflow: hidden;
+
       }
     }
 
