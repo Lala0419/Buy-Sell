@@ -6,6 +6,7 @@ const {
   removeFromFavourites,
   findFavByUserIdItemId,
 } = require("../db/queries/favourites");
+const { getSingleUser } = require(`../db/queries/users`);
 
 router.get("/", (req, res) => {
   // const userId = req.user.id; // <-- not sure if that's right..
@@ -15,7 +16,9 @@ router.get("/", (req, res) => {
     .then((data) => {
       const favoriteItems = data.rows;
       // res.json({ favoriteItems });
-      res.render("favorites", { favoriteItems });
+      getSingleUser(req.cookies.userId).then((user) => {
+        res.render("favorites", { favoriteItems, user });
+      });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
