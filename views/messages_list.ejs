@@ -15,7 +15,7 @@
 		<script defer src="/scripts/messages.js"></script>
 	</head>
 
-	<body class="messagesBody">
+	<body>
 		<%- include("partials/_nav") %>
 		<div class="top">
 			<h1><%=item.name %></h1>
@@ -56,7 +56,7 @@
 		</section>
 		<%}%>
 
-		<form action="/messages/<%= item.id %>" method="POST" id="messagesForm">
+		<form action="/messages" method="POST" id="messagesForm">
 			<input
 				class="input"
 				type="text"

@@ -13,17 +13,21 @@ const {
 router.get("/", (req, res) => {
   const userID = req.cookies.userId; // userID is hard coded
 
-  findFavouritesByUserId(userID)
-    .then((data) => {
-      const favoriteItems = data.rows;
-      console.log(favoriteItems);
-      getSingleUser(req.cookies.userId).then((user) => {
-        res.render("favorites", { favoriteItems, user });
+  if (!userID) {
+    res.redirect("users/login");
+  } else {
+    findFavouritesByUserId(userID)
+      .then((data) => {
+        const favoriteItems = data.rows;
+        console.log(favoriteItems);
+        getSingleUser(req.cookies.userId).then((user) => {
+          res.render("favorites", { favoriteItems, user });
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
       });
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
+  }
 });
 
 router.get("/:itemId", (req, res) => {

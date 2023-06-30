@@ -1,8 +1,11 @@
 <!-- Top nav bar (fixed) -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
  <style>
+body {
+  width: 100%;
+  position: relative;
+}
+
+
  nav {
   position: fixed;
   width: 100%;
@@ -13,8 +16,15 @@
   color: grey;
   box-shadow:2px 2px 2px rgb(142, 140, 140);
   background: white;
+  z-index: 2;
+  left: 0;
+  right: 0;
 
-
+  >a {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
 
   .logo {
     margin-left: 1%;
@@ -61,20 +71,26 @@
 }
 }
 </style>
-</head>
-<body>
+
 <nav>
   <a href="/"><img src="https://i.pinimg.com/550x/33/81/b1/3381b1684477e149d7cbd222fb9d6263.jpg"
   style="width: 40px; height: 40px; object-fit: cover" class="logo"></a></img>
 
   <div class="container1">
     <a href="/items/create" class="link"><span class="new_item">New item</span></a>
-    <a href="/messages" class="link"><span class="my_messages">  My Messages</span></a>
+    <a href="/messages/17" class="link"><span class="my_messages">  My Messages</span></a>
     <a href="/favorites" class="link"><span class="my_favourites">My Favourites</span></a>
-    <span class="Login/Register">Logged in as <%= user.username %></span>
-    <form method="POST" action="/users/logout">
-      <button class="logout" type="submit">Log out</button>
-    </form>
 
+    <% if (typeof user === "object") { %>
+
+      <span class="Login/Register">
+        Logged in as <%= user.username %></span>
+        <form method="POST" action="/users/logout">
+          <button class="logout" type="submit">Log out</button>
+        </form>
+
+    <% } else { %>
+      <a href="/users/login" class="link"><span class="login">Login/Register</span></a>
+      <% } %>
   </div>
 </nav>

@@ -14,7 +14,8 @@ router.get("/:itemId", (req, res) => {
 	const reciever_id = req.body.user_id;
 	//do they NOT have a cookie?
 	if (!userId) {
-		return res.status(401).send("you must login first");
+      res.redirect("/users/login");
+		// return res.status(401).send("you must login first");
 	}
 
 	//get a single use obj
@@ -50,12 +51,13 @@ router.get("/:itemId", (req, res) => {
 //  SEND MESSAGES (sender)
 /////////////////////////////////////////
 
-router.post("/", (req, res) => {
+router.post("/:itemId", (req, res) => {
+  const itemId = req.params.itemId;
 	const newMessage = req.body.message;
 	messageQueries
 		.createMessage(newMessage)
 		.then((data) => {
-			res.redirect("/messages");
+			res.redirect(`/messages/${itemId}`);
 		})
 		.catch((err) => {
 			res.status(500).json({ error: err.message });
