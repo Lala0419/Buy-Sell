@@ -1,8 +1,20 @@
 $(() => {
 
-  $(".container").find(".fa-heart").on('click', (event) => {
-    console.log("heart clicked", event.target);
+  $.ajax({
+      url: `/favorites/${window.location.pathname.split("/")[2]}`,
+      success: (response) => {
+        if (response.favoriteItems && response.favoriteItems.length > 0) {
+          $(".name_heart").find(".fa-heart").toggleClass('red-color');
+          console.log("random");
+        }
+      console.log("ajax get request: favourite", response);
+      }
+  })
+
+
+  $(".name_heart").find(".fa-heart").on('click', (event) => {
     $(event.target).toggleClass('red-color');
+    console.log("heart clicked", event.target);
 
     const itemId = $(event.target).data("item")
 
@@ -26,48 +38,72 @@ $(() => {
   }
   })
 
-  $(() => {
-    $(".item").find(".fa-circle").on('click', (event) => {
-      console.log("status changed", event.target);
-      $(event.target).toggleClass('green-color');
 
-      const itemId = $(event.target).data("item-id")
-      const itemStatus = $(event.target).data("item-status")
-      const itemStatusMessage = $("#itemStatusMessage")
+    // userid = seller_id (if userId = 1)
+    // To change the availability status of the item as a seller
+  $(".item").find(".fa-circle").on('click', (event) => {
+    console.log("status changed", event.target);
+    $(event.target).toggleClass('green-color');
 
-      console.log(
-        "jQuery console.log", itemId,
-        typeof itemStatus,
-        "itemStatusMessage", itemStatusMessage);
+    const itemId = $(event.target).data("item-id")
+    const itemStatus = $(event.target).data("item-status")
+    const itemStatusMessage = $("#itemStatusMessage")
 
-      if ($(event.target).hasClass('green-color')) {
-        itemStatusMessage.text("Available")
-        $.ajax({
-          type: 'POST',
-          url: `/items/${itemId}/status`,
-          data: { itemId, itemStatus }
-        })
-        // .done((response) => {
-        //   console.log("item available", response);
-        // })
+    console.log(
+      "jQuery console.log", itemId,
+      typeof itemStatus,
+      "itemStatusMessage", itemStatusMessage);
 
-      } else {
-        itemStatusMessage.text("Unavailable")
-        $.ajax({
-          type: 'POST',
-          url: `/items/${itemId}/status`,
-          data: { itemId, itemStatus }
-        })
-        // .done((response) => {
-        //   console.log("item unavailable", response);
-        // })
-    }
+    if ($(event.target).hasClass('green-color')) {
+      itemStatusMessage.text("Available")
+      $.ajax({
+        type: 'POST',
+        url: `/items/${itemId}/status`,
+        data: { itemId, itemStatus }
+      })
+      // .done((response) => {
+      //   console.log("item available", response);
+      // })
+
+    } else {
+      itemStatusMessage.text("Unavailable")
+      $.ajax({
+        type: 'POST',
+        url: `/items/${itemId}/status`,
+        data: { itemId, itemStatus }
+      })
+      // .done((response) => {
+      //   console.log("item unavailable", response);
+      // })
+  }
 
 
-    })
   })
+
+
+
+  // userid = seller_id
+  // To remove the item from the listing as a seller
+  $("#remove").on('click', (event) => {
+    const itemId = $(event.target).data("item-id");
+    $.ajax({
+      type: 'POST',
+      url: `/items/${itemId}/delete`,
+      data: { itemId },
+      success: ()=> {
+        window.location.href = "http://localhost:8080/"
+        console.log("response for ajax request");
+      }
+    })
+
+  })
+
+  $("#contact").on('click', (event) => {
+    console.log("contact clicked")
+    window.location.replace(`http://localhost:8080/messages/${window.location.pathname.split("/")[2]}`);
 
 })
 
+});
 
 

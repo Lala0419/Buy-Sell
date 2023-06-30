@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="/vendor/border-box.css" />
 		<link rel="stylesheet" href="/styles/main.css" />
 		<link rel="stylesheet" href="/styles/layout.css" />
+		<link rel="stylesheet" href="/styles/login.css" />
 
 		<script src="/vendor/jquery-3.0.0.js"></script>
 		<script defer src="/scripts/app.js"></script>
@@ -19,21 +20,31 @@
 	<body>
 		<h1>register page</h1>
 
-		<form action="/users/register" method="POST">
-			<label for="username">name:</label><br />
-			<input type="text" id="username" name="username" value="John" /><br />
-			<label for="email">email:</label><br />
-			<input type="text" id="email" name="email" value="Doe" /><br /><br />
-			<label for="phone_number">phone number:</label><br />
+		<form class="form" action="/users/register" method="POST">
+			<label for="username">name:</label>
+			<input type="text" id="username" name="username" value="Totoro" /><br />
+			<label for="email">email:</label>
+			<input
+				type="text"
+				id="email"
+				name="email"
+				value="totoro@gmail.com"
+			/><br /><br />
+			<label for="phone_number">phone number:</label>
 			<input
 				type="text"
 				id="phone_number"
 				name="phone_number"
-				value="Doe"
+				value="7781111111"
 			/><br /><br />
-			<label for="address">address:</label><br />
-			<input type="text" id="address" name="address" value="Doe" /><br /><br />
-			<input type="submit" value="Submit" />
+			<label for="address">address:</label>
+			<input
+				type="text"
+				id="address"
+				name="address"
+				value="1st Ave West Vancouver"
+			/><br /><br />
+			<input class="button-register" type="submit" value="Register" />
 		</form>
 	</body>
 </html>

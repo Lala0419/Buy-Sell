@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const itemQueries = require(`../db/queries/items`);
+const { getSingleUser } = require(`../db/queries/users`);
 
 // according to server.js this route is actually localhost8080/items
 router.get("/", (req, res) => {
@@ -37,8 +38,9 @@ router.get("/:id", (req, res) => {
   itemQueries
     .getItemById(req.params.id)
     .then((item) => {
-      console.log("item", item);
-      res.render("item.ejs", { item, user: { id: 1 } });
+      getSingleUser(req.cookies.userId).then((user) => {
+        res.render("item.ejs", { item, user });
+      });
     })
     .catch((err) => {
       console.error(err);
@@ -91,6 +93,19 @@ router.post("/create", (req, res) => {
       res
         .status(500)
         .json({ message: "An error occurred. Please try again later." });
+    });
+});
+router.post("/:id/delete", (req, res) => {
+  itemQueries
+    .deleteItemListing(req.body.itemId)
+    .then((item) => {
+      // res.json("item successfully deleted");
+      console.log("router post for delete");
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: err.message });
     });
 });
 

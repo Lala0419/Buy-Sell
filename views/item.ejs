@@ -37,7 +37,14 @@
 
 
     <section class="item">
+      <div class="title_remove">
       <h1 class="item_name"><%= item.name %></h1>
+      <div>
+        <% if (user.id === item.seller_id) { %>
+      <button id="remove" data-item-id=" <%= item.id %> ">Remove Item</button>
+        <% } %>
+      </div>
+      </div>
       <div>
         <% if (user.id === item.seller_id) { %>
           <i class="fa-solid fa-circle
@@ -58,12 +65,15 @@
     <section class="container">
       <span id="photo_and_favourite">
         <img class="item_photo" alt="item-photo" src="<%= item.photo %>" />
-        <i class="fa-solid fa-heart" data-item="<%= item.id %>"></i>
+
       </span>
 
       <div id="text_container">
         <div id="item_text_box">
-          <h2 class="name"><%= item.name %></h2>
+          <div class="name_heart">
+            <h2 class="name"><%= item.name %></h2>
+            <i class="fa-solid fa-heart" data-item="<%= item.id %>"></i>
+          </div>
           <div id="price_rating">
             <div id="rating">
               <span class="fa fa-star checked"></span>
@@ -75,9 +85,10 @@
             <h3 class="item_price"><%= item.price %> CAD</h3>
           </div>
           <span class="description"><%= item.description %></span>
-          <a href="/messages">
+
             <button id="contact">Contact</button>
-          </a>
+
+
         </div>
       </div>
 
